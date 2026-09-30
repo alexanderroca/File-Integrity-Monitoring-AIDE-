@@ -1,0 +1,11 @@
+[Unit]
+Description=Run AIDE File Integrity Check Daily
+Requires=aide-check.service
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=15m
+
+[Install]
+WantedBy=timers.target

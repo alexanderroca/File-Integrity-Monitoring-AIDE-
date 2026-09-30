@@ -1,0 +1,10 @@
+[Unit]
+Description=AIDE File Integrity Check
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/aide --check --config /etc/aide/aide.conf
+# AIDE returns exit status 1 when differences are found. 
+# We whitelist this so systemd treats it as a successful execution rather than a unit failure.
+SuccessExitStatus=0 1
